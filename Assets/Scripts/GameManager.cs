@@ -17,5 +17,19 @@ public class GameManager : MonoBehaviour
         commandProcessor = new CommandProcessor();
     }
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.K))
+            commandProcessor.Undo();
+
+        if (Input.GetKeyDown(KeyCode.L))
+            commandProcessor.UndoAll();
+
+        if (Input.GetKeyDown(KeyCode.G))
+            commandProcessor.Redo();
+
+        if (Input.GetKeyDown(KeyCode.H))
+            commandProcessor.RedoAll();
+    }
 
 }

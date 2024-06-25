@@ -21,9 +21,6 @@ public class Player : MonoBehaviour
             Move(true);
         else if(Input.GetKeyDown(KeyCode.S) || Input.GetKeyDown(KeyCode.W))
             Move(false);
-
-        if(Input.GetKeyDown(KeyCode.K))
-            GameManager.Instance.commandProcessor.Undo();
     }
 
     private void Move(bool isHorizontalAxis)
