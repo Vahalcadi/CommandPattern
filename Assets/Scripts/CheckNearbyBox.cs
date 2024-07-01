@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CheckNearbyBox : MonoBehaviour
@@ -17,11 +15,10 @@ public class CheckNearbyBox : MonoBehaviour
 
     private void Update()
     {
-        if(Input.GetKey(KeyCode.E))
+        if (Input.GetKey(KeyCode.E))
             keyPressed = true;
         else
-            keyPressed = false; 
-        
+            keyPressed = false;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -37,11 +34,8 @@ public class CheckNearbyBox : MonoBehaviour
     {
         if (other.CompareTag("Box"))
         {
-
             if (!keyPressed)
                 return;
-
-            Debug.Log("skibidi");
 
             if (dotProduct > .5f)
                 UseCommand(other.transform, other.transform.forward, 1);
@@ -57,7 +51,7 @@ public class CheckNearbyBox : MonoBehaviour
                     UseCommand(other.transform, other.transform.right, -1);
             }
 
-        }        
+        }
     }
 
     private void UseCommand(Transform transform, Vector3 direction, float angle)

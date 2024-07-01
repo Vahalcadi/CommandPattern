@@ -1,6 +1,4 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 public class CommandProcessor
 {
@@ -25,15 +23,9 @@ public class CommandProcessor
 
     public void UndoAll()
     {
-        ICommand currentCommand;
-
         while (commands.Count > 0)
         {
-            if (commands.TryPop(out currentCommand))
-            {
-                redoCommands.Push(currentCommand);
-                currentCommand.Undo();
-            }
+            Undo();
         }
     }
 
@@ -49,15 +41,9 @@ public class CommandProcessor
 
     public void RedoAll()
     {
-        ICommand currentCommand;
-
         while (redoCommands.Count > 0)
         {
-            if (redoCommands.TryPop(out currentCommand))
-            {
-                commands.Push(currentCommand);
-                currentCommand.Execute();
-            }
+            Redo();
         }
     }
 }
